@@ -29,7 +29,7 @@ public class FacultyController {
 		
 		
 		//Create our List
-		theFaculties = new ArrayList();
+		theFaculties = new ArrayList<>();
 		
 		
 		//Add to our List
