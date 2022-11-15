@@ -28,18 +28,31 @@ public class FacultyServiceImpl implements FacultyService {
 	@Override
 	public Faculty findById(int theId) {
 		// TODO Auto-generated method stub
-		return null;
+		Optional<Faculty> facultyid = facultyRepository.findById(theId);
+		
+		Faculty theFaculty = null;
+		if (facultyid.isPresent()) {
+			theFaculty = facultyid.get();
+		}
+		else
+		{
+			throw new RuntimeException("The FacultyId you've entered is invalid - " + theId);
+		}
+		
+		return theFaculty;
 	}
 
 	@Override
 	public void save(Faculty theFaculty) {
 		// TODO Auto-generated method stub
+		facultyRepository.save(theFaculty);
 
 	}
 
 	@Override
 	public void deleteById(int theId) {
 		// TODO Auto-generated method stub
+		facultyRepository.deleteById(theId);
 
 	}
 
