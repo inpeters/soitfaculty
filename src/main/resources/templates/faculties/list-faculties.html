@@ -21,12 +21,15 @@
 		<!-- create a button to add new faculty -->
 		<a th:href="@{/Faculties/viewAddForm}" class="btn btn-dark">Add New Faculty</a>
 		
-		<table class="table table-bordered">
+		<table class="table table-bordered table-dark">
 			<thead>
 				<tr class="bg-danger">
 					<th>First Name</th>
 					<th>Last Name</th>
+					<th>Title</th>
 					<th>Email</th>
+					<th>Update</th>
+					
 				</tr>
 			</thead>
 
@@ -34,7 +37,20 @@
 				<tr th:each="theFaculty : ${faculties}">
 					<td th:text="${theFaculty.firstName}" />
 					<td th:text="${theFaculty.lastName}" />
+					<td th:text="${theFaculty.Title}" />
 					<td th:text="${theFaculty.email}" />
+					
+					<td>
+					<a th:href="@{/Faculties/viewUpdateForm(facultyId=${theFaculty.id})}"
+					class="btn btn-light btn-sm">Update</a>
+					
+					<a th:href="@{/Faculties/delete(facultyId=${theFaculty.id})}"
+					class="btn btn-danger btn-sm"onclick="if(!(confirm('Please confirm that you want to remove this faculty member'))) return false">Delete</a>
+					</td>
+					
+					
+					
+					
 				</tr>
 			</tbody>
 
