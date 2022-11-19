@@ -69,13 +69,16 @@ public class FacultyController {
 	@PostMapping("/save")
 	public String saveFaculty(@ModelAttribute("faculty") Faculty theFaculty) {
 		
+		//Register the Faculty
 		facultyService.save(theFaculty);
 		
+		//Block duplicates submission for accidental refresh
 		return "redirect:/Faculties/list";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam("facultyId") int theId) {
+		
 		//Remove faculty
 		facultyService.deleteById(theId);
 		
